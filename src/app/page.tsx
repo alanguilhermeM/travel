@@ -1,9 +1,21 @@
-// import Image from "next/image";
+import SurroundingPlaces from "@/components/SurroundingPlaces";
+import { getCity } from "../api/geocoding";
 
-export default function Home() {
+const Home: React.FC = async () => {
+
+  const handleCity = async () => {
+    const city = await getCity();
+
+    return city;
+  }
+
+  const city = await handleCity()
+
   return (
     <div className="">
-      <h1>Olá</h1>
+      <SurroundingPlaces city={city} />
     </div>
   );
 }
+
+export default Home;
